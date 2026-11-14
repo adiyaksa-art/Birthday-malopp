@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Halimah Azzahra! 🎀 5 Juni</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Particle Canvas (Sakura Petals, Cursor Sparkles, Confetti Hearts) -->
+  <canvas id="fx-canvas" aria-hidden="true"></canvas>
+
+  <!-- Floating Top Bar (visible after opening gift) -->
+  <header class="floating-top-bar" id="floating-top-bar">
+    <div class="chapter-dots" id="chapter-dots" aria-label="Pilih halaman slide">
+      <button type="button" class="ch-dot active" data-goto="0" title="Kalender 5 Juni" aria-label="Slide 1: Kalender 5 Juni"></button>
+      <button type="button" class="ch-dot" data-goto="1" title="Pretty Girl" aria-label="Slide 2: Pretty Girl"></button>
+      <button type="button" class="ch-dot" data-goto="2" title="Kue & Harapan" aria-label="Slide 3: Kue & Harapan"></button>
+      <button type="button" class="ch-dot" data-goto="3" title="Surat Untukmu" aria-label="Slide 4: Surat"></button>
+      <button type="button" class="ch-dot" data-goto="4" title="Slide Foto & Kolase" aria-label="Slide 5: Foto"></button>
+      <button type="button" class="ch-dot" data-goto="5" title="Just for you" aria-label="Slide 6: Pesan"></button>
+      <button type="button" class="ch-dot" data-goto="6" title="Penutup" aria-label="Slide 7: Penutup"></button>
+      <span class="ch-counter" id="ch-counter">1/7</span>
+    </div>
+
+    <button type="button" class="sound-pill" id="sound-toggle" aria-label="Putar atau matikan musik">
+      <span class="vinyl-disc" id="vinyl-disc" aria-hidden="true"></span>
+      <span id="sound-label">Musik: Nyala</span>
+    </button>
+  </header>
+
+  <!-- =========================================================
+       COVER SCREEN: 3D PINK GIFT BOX ("Tap to open")
+       ========================================================= -->
+  <section class="cover-screen" id="cover-screen" aria-label="Buka hadiah ulang tahun Halimah Azzahra">
+    <div class="cover-lace-top" aria-hidden="true"></div>
+    <div class="cover-lace-bottom" aria-hidden="true"></div>
+    <div class="cover-sparkles" aria-hidden="true">
+      <span class="sp-1">✦</span>
+      <span class="sp-2">🌸</span>
+      <span class="sp-3">🎀</span>
+      <span class="sp-4">✦</span>
+      <span class="sp-5">🩷</span>
+    </div>
+
+    <!-- Floral burst layer when gift box opens -->
+    <div class="cover-burst-layer" id="cover-burst-layer" aria-hidden="true"></div>
+
+    <div class="cover-inner">
+      <p class="cover-eyebrow">5 JUNI SPECIAL GIFT</p>
+      <h1 class="script-hero">Happy Birthday Sayangg<br><span class="hero-name" data-recipient>Halimah Azzahra</span></h1>
+      <p class="cover-sub">the Most Pretty Girl in the world  🩷</p>
+
+      <button type="button" class="cover-gift-btn" id="cover-gift-btn" aria-label="Ketuk untuk membuka hadiah">
+        <div class="gift-3d-wrap" id="gift-3d-wrap">
+          <svg viewBox="0 0 220 200" class="gift-3d-svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="boxFront" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ffd9e8"/>
+                <stop offset="100%" stop-color="#ffb8d4"/>
+              </linearGradient>
+              <linearGradient id="boxSide" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ffc3da"/>
+                <stop offset="100%" stop-color="#f59dc0"/>
+              </linearGradient>
+              <linearGradient id="ribbonPink" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ff9ac2"/>
+                <stop offset="100%" stop-color="#ec6a9b"/>
+              </linearGradient>
+              <radialGradient id="softShadow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="rgba(226, 98, 148, 0.28)"/>
+                <stop offset="100%" stop-color="rgba(226, 98, 148, 0)"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="110" cy="182" rx="76" ry="14" fill="url(#softShadow)"/>
+            <path d="M44 82 L110 100 L110 176 L44 156 Z" fill="url(#boxFront)" stroke="#f8abc9" stroke-width="1.5"/>
+            <path d="M110 100 L176 82 L176 156 L110 176 Z" fill="url(#boxSide)" stroke="#f497bc" stroke-width="1.5"/>
+            <path d="M68 89 L86 94 L86 169 L68 163 Z" fill="url(#ribbonPink)"/>
+            <path d="M134 94 L152 89 L152 163 L134 169 Z" fill="#e55f92"/>
+
+            <g class="gift-3d-lid">
+              <path d="M36 66 L110 46 L184 66 L110 88 Z" fill="#fff2f7" stroke="#f8abc9" stroke-width="1.5"/>
+              <path d="M36 66 L110 88 L110 106 L36 84 Z" fill="#ffe0ec" stroke="#f8abc9" stroke-width="1.5"/>
+              <path d="M110 88 L184 66 L184 84 L110 106 Z" fill="#ffcbe0" stroke="#f497bc" stroke-width="1.5"/>
+              <path d="M64 58 L146 77 L158 73 L76 55 Z" fill="url(#ribbonPink)"/>
+              <path d="M156 58 L74 77 L62 73 L144 55 Z" fill="url(#ribbonPink)"/>
+              <path d="M64 74 L84 80 L84 98 L64 92 Z" fill="#ec6a9b"/>
+              <path d="M136 80 L156 74 L156 92 L136 98 Z" fill="#df5489"/>
+              <path d="M110 62 C86 24, 48 34, 62 56 C72 68, 96 66, 110 62 Z" fill="#ff9cc4" stroke="#ec6a9b" stroke-width="1.8"/>
+              <path d="M110 62 C134 24, 172 34, 158 56 C148 68, 124 66, 110 62 Z" fill="#ffb8d5" stroke="#ec6a9b" stroke-width="1.8"/>
+              <path d="M104 64 L82 88 L98 84 Z" fill="#ec6a9b"/>
+              <path d="M116 64 L138 88 L122 84 Z" fill="#ec6a9b"/>
+              <circle cx="110" cy="61" r="10" fill="#ff7eb0" stroke="#e25288" stroke-width="1.8"/>
+              <circle cx="107" cy="58" r="3" fill="#fff5f9"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="tap-to-open-row">
+          <svg class="curved-arrow left" viewBox="0 0 60 60" aria-hidden="true">
+            <path d="M46 46 Q18 42 18 12" fill="none" stroke="#8a566d" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 18 L18 10 L25 18" fill="none" stroke="#8a566d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="tap-open-pill">Tap to open</span>
+          <svg class="curved-arrow right" viewBox="0 0 60 60" aria-hidden="true">
+            <path d="M14 46 Q42 42 42 12" fill="none" stroke="#8a566d" stroke-width="2" stroke-linecap="round"/>
+            <path d="M35 18 L42 10 L48 18" fill="none" stroke="#8a566d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       INTERACTIVE ANIMATED SLIDE DECK (7 CUTE SLIDES)
+       ========================================================= -->
+  <main class="slides-deck" id="slides-deck" aria-hidden="true">
+
+    <!-- SLIDE 1: 5 JUNI CALENDAR + SPOTIFY MUSIC PLAYER -->
+    <section class="slide band-calendar is-active" data-slide="0" id="slide-0" aria-label="Kalender 5 Juni dan pemutar musik">
+      <div class="slide-inner">
+        <p class="eyebrow-italic anim-item" style="--stagger:0.05s">Today is all about you</p>
+
+        <div class="calendar-heading-wrap anim-item" style="--stagger:0.14s">
+          <span class="paw-sticker" aria-hidden="true">🐾</span>
+          <h2 class="script-title calendar-month">Juni</h2>
+        </div>
+
+        <div class="calendar-card anim-item" style="--stagger:0.22s" id="calendar-card">
+          <div class="cal-weekdays">
+            <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+          </div>
+          <div class="cal-days" id="cal-days"></div>
+          <img class="cal-flower" src="asset/bunga%20mpu.png" alt="" aria-hidden="true">
+        </div>
+
+        <p class="cal-birthday-tag anim-item" style="--stagger:0.32s" id="cal-birthday-tag">
+          🎂 Hari spesial Halimah Azzahra: <strong>5 Juni</strong> 🩷
+        </p>
+
+        <p class="music-prompt anim-item" style="--stagger:0.4s">Nyalakan musiknyaa sayangg</p>
+
+        <div class="spotify-card anim-item" style="--stagger:0.48s" id="spotify-card">
+          <div class="spotify-art">
+            <img src="asset/bunga%20mpu.png" alt="Cover lagu Semua Aku Dirayakan">
+          </div>
+          <div class="spotify-meta">
+            <div class="spotify-title-row">
+              <span class="spotify-title" id="spotify-title">Semua Aku Dirayakan</span>
+              <div class="eq-bars" id="eq-bars" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="spotify-artist" id="spotify-artist">Nadin Amizah</div>
+            <div class="spotify-bar-wrap">
+              <div class="spotify-bar"><div class="spotify-bar-fill" id="spotify-bar-fill"></div></div>
+              <span class="spotify-time" id="spotify-time">0:00</span>
+            </div>
+          </div>
+          <button type="button" class="spotify-play-btn" id="spotify-play-btn" aria-label="Putar atau jeda lagu Semua Aku Dirayakan">
+            <span id="spotify-play-icon">⏸</span>
+          </button>
+        </div>
+
+        <div class="music-extra-row anim-item" style="--stagger:0.54s">
+          <input type="file" id="mp3-file-input" accept="audio/*" hidden>
+          <button type="button" class="music-mini-pill" id="btn-pick-mp3">🎵 Pilih File MP3</button>
+          <button type="button" class="music-mini-pill" id="btn-toggle-spotify">🎧 Player Spotify</button>
+          <a class="music-mini-pill" href="https://open.spotify.com/track/2x3vwXWuecPrRqgEUuSUJA" target="_blank" rel="noopener noreferrer">Buka App Spotify ↗</a>
+        </div>
+
+        <div class="spotify-embed-slot" id="spotify-embed-slot" aria-hidden="true"></div>
+        <p class="music-status-note anim-item" style="--stagger:0.58s" id="music-status-note"></p>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: DIAGONAL PINK GINGHAM — PRETTY GIRL -->
+    <section class="slide band-gingham" data-slide="1" id="slide-1" aria-label="Pretty Girl Halimah Azzahra">
+      <div class="slide-inner">
+        <h2 class="script-title pretty-title anim-item" style="--stagger:0.05s">Pretty Girl</h2>
+        <p class="pretty-name-pill anim-item" style="--stagger:0.12s" data-recipient>Halimah Azzahra</p>
+
+        <div class="heart-frame-stage anim-item" style="--stagger:0.2s">
+          <div class="pixel-heart-bubble" aria-hidden="true">
+            <svg viewBox="0 0 46 42" width="44" height="40">
+              <path d="M8 4 H38 Q42 4 42 8 V26 Q42 30 38 30 H20 L12 38 V30 H8 Q4 30 4 26 V8 Q4 4 8 4 Z" fill="#ffffff" stroke="#8a566d" stroke-width="2"/>
+              <path d="M23 23 C18 17 13 15 13 12 C13 9 16 8 19 10 C21 11 23 13 23 13 C23 13 25 11 27 10 C30 8 33 9 33 12 C33 15 28 17 23 23 Z" fill="#ff7eb0"/>
+            </svg>
+          </div>
+
+          <div class="scalloped-heart-box" id="hero-heart-box">
+            <svg class="heart-scallop-svg" viewBox="0 0 240 225" aria-hidden="true">
+              <defs>
+                <clipPath id="heartClipPath">
+                  <path d="M120 202 C46 154, 14 108, 14 66 C14 34, 40 14, 70 14 C94 14, 112 28, 120 44 C128 28, 146 14, 170 14 C200 14, 226 34, 226 66 C226 108, 194 154, 120 202 Z"/>
+                </clipPath>
+              </defs>
+              <path d="M120 212 C38 160, 4 110, 4 65 C4 28, 34 4, 68 4 C95 4, 113 19, 120 35 C127 19, 145 4, 172 4 C206 4, 236 28, 236 65 C236 110, 202 160, 120 212 Z" fill="#ffffff" stroke="#ffb8d4" stroke-width="5" stroke-dasharray="1 10" stroke-linecap="round"/>
+              <path d="M120 206 C42 156, 10 109, 10 66 C10 31, 38 10, 69 10 C94 10, 112 24, 120 40 C128 24, 146 10, 171 10 C202 10, 230 31, 230 66 C230 109, 198 156, 120 206 Z" fill="#ffeaf3" stroke="#ff9cc2" stroke-width="3"/>
+              <g clip-path="url(#heartClipPath)" id="hero-heart-content"></g>
+            </svg>
+          </div>
+
+          <img class="hf-bouquet" src="asset/bunga%20mpk.png" alt="" aria-hidden="true">
+          <div class="hf-star" aria-hidden="true">
+            <svg viewBox="0 0 60 60" width="54" height="54">
+              <defs>
+                <radialGradient id="starPink" cx="35%" cy="30%" r="70%">
+                  <stop offset="0%" stop-color="#fff0f6"/>
+                  <stop offset="55%" stop-color="#ffb8d4"/>
+                  <stop offset="100%" stop-color="#f28ab2"/>
+                </radialGradient>
+              </defs>
+              <path d="M30 4 L37 20 L55 22 L41 34 L45 52 L30 43 L15 52 L19 34 L5 22 L23 20 Z" fill="url(#starPink)" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="hf-bow" aria-hidden="true">
+            <svg viewBox="0 0 80 48" width="70" height="42">
+              <path d="M40 22 C24 4, 4 10, 10 26 C15 38, 30 32, 40 22 Z" fill="#ffd4e5" stroke="#f092b6" stroke-width="2"/>
+              <path d="M40 22 C56 4, 76 10, 70 26 C65 38, 50 32, 40 22 Z" fill="#ffe2ee" stroke="#f092b6" stroke-width="2"/>
+              <path d="M34 25 L24 44 L36 37 Z" fill="#f9a8c8"/>
+              <path d="M46 25 L56 44 L44 37 Z" fill="#f9a8c8"/>
+              <circle cx="40" cy="22" r="6" fill="#fff5f9" stroke="#f092b6" stroke-width="2"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="scallop-cloud-card anim-item" style="--stagger:0.32s">
+          <div class="cloud-bow-top" aria-hidden="true">🎀</div>
+          <p class="cloud-card-lead">Today is your day.</p>
+          <p class="cloud-card-body">
+            Semoga ditanggal 5 Juni ini dipenuhi sama hal hal yang bikin kamu senyum yaa sayangg, orang-orang yang bikin kamu ngerasa disayang, dan momen-momen kecil yang nantinya bakal selalu kamu inget sampe tua nantii.
+          </p>
+        </div>
+
+        <div class="pretty-bottom-deco" aria-hidden="true">
+          <img class="pretty-deco-flower" src="asset/bunga%20mpu.png" alt="">
+          <img class="pretty-deco-butterfly" src="asset/kupu%20kupu.png" alt="">
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: INTERACTIVE 5-CANDLE CAKE + WISH RIBBON TAGS -->
+    <section class="slide band-cake" data-slide="2" id="slide-2" aria-label="Tiup lilin dan permohonan">
+      <div class="party-bunting" aria-hidden="true">
+        <svg viewBox="0 0 600 72" preserveAspectRatio="none" class="bunting-svg">
+          <path d="M0 10 Q150 48 300 18 Q450 48 600 10" fill="none" stroke="#f497b8" stroke-width="2.5"/>
+          <polygon points="44,18 76,24 56,50" fill="#ffb8d1" stroke="#fff" stroke-width="1.5"/>
+          <polygon points="104,26 138,30 118,56" fill="#ffffff" stroke="#ffb8d1" stroke-width="1.5"/>
+          <polygon points="164,31 198,31 181,58" fill="#ff96bd" stroke="#fff" stroke-width="1.5"/>
+          <polygon points="224,29 258,25 243,53" fill="#ffe4ef" stroke="#ff9ec2" stroke-width="1.5"/>
+          <polygon points="342,25 376,29 357,53" fill="#ffe4ef" stroke="#ff9ec2" stroke-width="1.5"/>
+          <polygon points="402,31 436,31 419,58" fill="#ff96bd" stroke="#fff" stroke-width="1.5"/>
+          <polygon points="462,30 496,26 482,56" fill="#ffffff" stroke="#ffb8d1" stroke-width="1.5"/>
+          <polygon points="524,24 556,18 544,50" fill="#ffb8d1" stroke="#fff" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <div class="slide-inner cake-slide-inner">
+        <p class="eyebrow-tag anim-item" style="--stagger:0.05s">MAKE A WISH</p>
+        <h2 class="script-title-md anim-item" style="--stagger:0.12s">Tiup Lilinnya Dulu Cintakuu</h2>
+
+        <div class="cake-stage anim-item" style="--stagger:0.18s" id="cake-stage">
+          <div class="candle-halo" id="candle-halo"></div>
+          <div class="matchstick" id="matchstick" aria-hidden="true">
+            <div class="match-flame"></div>
+            <div class="match-tip"></div>
+            <div class="match-wood"></div>
+          </div>
+
+          <div class="flames-row" id="flames-row" aria-hidden="true">
+            <div class="mini-flame f-1"><span class="mf-out"></span><span class="mf-in"></span></div>
+            <div class="mini-flame f-2"><span class="mf-out"></span><span class="mf-in"></span></div>
+            <div class="mini-flame f-3"><span class="mf-out"></span><span class="mf-in"></span></div>
+            <div class="mini-flame f-4"><span class="mf-out"></span><span class="mf-in"></span></div>
+            <div class="mini-flame f-5"><span class="mf-out"></span><span class="mf-in"></span></div>
+          </div>
+
+          <div class="smoke-group" id="smoke-group" aria-hidden="true">
+            <span class="smoke s1"></span><span class="smoke s2"></span><span class="smoke s3"></span><span class="smoke s4"></span><span class="smoke s5"></span>
+          </div>
+
+          <div class="breath-puffs" id="breath-puffs" aria-hidden="true">
+            <span>☁️</span><span>〰️</span><span>✨</span>
+          </div>
+
+          <svg viewBox="0 0 280 270" class="cake-svg" role="img" aria-label="Kue ulang tahun kawaii putih pink untuk Halimah Azzahra">
+            <ellipse cx="140" cy="252" rx="94" ry="12" fill="rgba(232,126,164,0.16)"/>
+            <path d="M120 218 L160 218 L170 245 Q140 252 110 245 Z" fill="#fff8fb" stroke="#f7bfd4" stroke-width="2"/>
+            <ellipse cx="140" cy="248" rx="44" ry="8" fill="#ffffff" stroke="#f7bfd4" stroke-width="2"/>
+            <ellipse cx="140" cy="214" rx="110" ry="16" fill="#ffffff" stroke="#f7bfd4" stroke-width="2.5"/>
+            <path d="M38 216 Q49 229 60 218 Q71 229 82 219 Q93 230 104 220 Q115 231 126 221 Q140 232 154 221 Q165 231 176 220 Q187 230 198 219 Q209 229 220 218 Q231 229 242 216" fill="#fff2f7" stroke="#f7bfd4" stroke-width="2"/>
+            <rect x="54" y="142" width="172" height="68" rx="16" fill="#fffbfd" stroke="#f5bdd2" stroke-width="2.2"/>
+            <path d="M54 156 Q54 142 70 142 L210 142 Q226 142 226 156 L226 167 Q215 184 206 168 Q195 189 184 167 Q173 179 162 167 Q150 192 140 167 Q128 184 116 166 Q104 189 92 167 Q80 181 70 166 Q61 177 54 165 Z" fill="#ffa8c9"/>
+            <circle cx="74" cy="197" r="4" fill="#ffd9e8"/><circle cx="92" cy="199" r="4" fill="#ffffff" stroke="#ffb8d1" stroke-width="1"/>
+            <circle cx="110" cy="200" r="4" fill="#ffd9e8"/><circle cx="128" cy="201" r="4" fill="#ffffff" stroke="#ffb8d1" stroke-width="1"/>
+            <circle cx="152" cy="201" r="4" fill="#ffd9e8"/><circle cx="170" cy="200" r="4" fill="#ffffff" stroke="#ffb8d1" stroke-width="1"/>
+            <circle cx="188" cy="199" r="4" fill="#ffd9e8"/><circle cx="206" cy="197" r="4" fill="#ffffff" stroke="#ffb8d1" stroke-width="1"/>
+            <g transform="translate(140,185)">
+              <path d="M0 0 C-14 -12, -26 -6, -22 6 C-18 14, -6 10, 0 0 Z" fill="#ff7eb0" stroke="#e25288" stroke-width="1.6"/>
+              <path d="M0 0 C14 -12, 26 -6, 22 6 C18 14, 6 10, 0 0 Z" fill="#ff9cc2" stroke="#e25288" stroke-width="1.6"/>
+              <path d="M-3 3 L-10 18 L-1 13 Z" fill="#e25288"/><path d="M3 3 L10 18 L1 13 Z" fill="#e25288"/>
+              <circle cx="0" cy="0" r="4.5" fill="#fff5f8" stroke="#e25288" stroke-width="1.6"/>
+            </g>
+            <rect x="80" y="90" width="120" height="54" rx="14" fill="#fff0f6" stroke="#f5bdd2" stroke-width="2.2"/>
+            <path d="M80 103 Q80 90 96 90 L184 90 Q200 90 200 103 L200 112 Q191 127 182 113 Q172 128 162 112 Q151 122 140 113 Q128 130 118 112 Q107 122 98 113 Q90 124 80 111 Z" fill="#ff8fb8"/>
+            <ellipse cx="96" cy="89" rx="11" ry="7.5" fill="#ffffff" stroke="#ffd2e3" stroke-width="1.4"/>
+            <ellipse cx="118" cy="87" rx="11" ry="7.5" fill="#ffffff" stroke="#ffd2e3" stroke-width="1.4"/>
+            <ellipse cx="140" cy="86" rx="11.5" ry="8" fill="#ffffff" stroke="#ffd2e3" stroke-width="1.4"/>
+            <ellipse cx="162" cy="87" rx="11" ry="7.5" fill="#ffffff" stroke="#ffd2e3" stroke-width="1.4"/>
+            <ellipse cx="184" cy="89" rx="11" ry="7.5" fill="#ffffff" stroke="#ffd2e3" stroke-width="1.4"/>
+            <circle cx="127" cy="127" r="2.8" fill="#54283c" class="cake-eye"/>
+            <circle cx="153" cy="127" r="2.8" fill="#54283c" class="cake-eye"/>
+            <ellipse cx="119" cy="131" rx="4.6" ry="2.5" fill="#ff9cc2" opacity="0.8"/>
+            <ellipse cx="161" cy="131" rx="4.6" ry="2.5" fill="#ff9cc2" opacity="0.8"/>
+            <path d="M135 130 Q140 135 145 130" fill="none" stroke="#54283c" stroke-width="2.2" stroke-linecap="round"/>
+            <g transform="translate(88,80)"><path d="M0 -5 C5 -5, 6 2, 0 7 C-6 2, -5 -5, 0 -5 Z" fill="#ff5f8f"/><path d="M-3 -5 L0 -7 L3 -5" fill="none" stroke="#6cc070" stroke-width="2" stroke-linecap="round"/></g>
+            <g transform="translate(192,80)"><path d="M0 -5 C5 -5, 6 2, 0 7 C-6 2, -5 -5, 0 -5 Z" fill="#ff5f8f"/><path d="M-3 -5 L0 -7 L3 -5" fill="none" stroke="#6cc070" stroke-width="2" stroke-linecap="round"/></g>
+            <g>
+              <rect x="100" y="52" width="8" height="35" rx="3" fill="#fff" stroke="#f06292" stroke-width="1.5"/>
+              <path d="M101 60 L107 56 M101 70 L107 66 M101 80 L107 76" stroke="#ff8fb8" stroke-width="2.6" stroke-linecap="round"/>
+              <path d="M104 52 L104 46" stroke="#54283c" stroke-width="1.8" stroke-linecap="round"/>
+              <rect x="118" y="48" width="8" height="39" rx="3" fill="#fff" stroke="#f06292" stroke-width="1.5"/>
+              <path d="M119 56 L125 52 M119 66 L125 62 M119 76 L125 72" stroke="#ff8fb8" stroke-width="2.6" stroke-linecap="round"/>
+              <path d="M122 48 L122 42" stroke="#54283c" stroke-width="1.8" stroke-linecap="round"/>
+              <rect x="136" y="42" width="8" height="44" rx="3" fill="#fff" stroke="#e8528a" stroke-width="1.6"/>
+              <path d="M137 51 L143 47 M137 61 L143 57 M137 71 L143 67 M137 81 L143 77" stroke="#ff7eb0" stroke-width="2.8" stroke-linecap="round"/>
+              <path d="M140 42 L140 36" stroke="#54283c" stroke-width="2" stroke-linecap="round"/>
+              <rect x="154" y="48" width="8" height="39" rx="3" fill="#fff" stroke="#f06292" stroke-width="1.5"/>
+              <path d="M155 56 L161 52 M155 66 L161 62 M155 76 L161 72" stroke="#ff8fb8" stroke-width="2.6" stroke-linecap="round"/>
+              <path d="M158 48 L158 42" stroke="#54283c" stroke-width="1.8" stroke-linecap="round"/>
+              <rect x="172" y="52" width="8" height="35" rx="3" fill="#fff" stroke="#f06292" stroke-width="1.5"/>
+              <path d="M173 60 L179 56 M173 70 L179 66 M173 80 L179 76" stroke="#ff8fb8" stroke-width="2.6" stroke-linecap="round"/>
+              <path d="M176 52 L176 46" stroke="#54283c" stroke-width="1.8" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </div>
+
+        <p class="cake-wish-copy" id="cake-wish-copy">sebentar... lilinnya dinyalakan satu per satu ✨</p>
+
+        <div class="cake-controls-row">
+          <button type="button" class="hold-zone" id="hold-zone" aria-label="Tekan dan tahan untuk meniup lilin">
+            <svg width="82" height="82" viewBox="0 0 82 82" aria-hidden="true">
+              <circle class="track" cx="41" cy="41" r="35"></circle>
+              <circle class="prog" id="hold-progress" cx="41" cy="41" r="35"></circle>
+            </svg>
+            <span class="hold-label" id="hold-label">🕯️</span>
+          </button>
+          <button type="button" class="relight-pill" id="btn-relight">Nyalakan Ulang 🔥</button>
+        </div>
+        <p class="cake-hint" id="cake-hint">tekan &amp; tahan tombol bundar sampai 5 lilin padam</p>
+
+        <div class="mini-wishes-wrap anim-item" style="--stagger:0.28s">
+          <div class="wish-jar-pill" id="wish-jar-pill">
+            <span>🎀 Harapan untuk Sayangkuu:</span>
+            <strong id="wish-jar-count">0/4 terkumpul</strong>
+          </div>
+          <div class="tags-grid" id="tags-grid"></div>
+          <div class="wish-toast" id="wish-toast" role="status" aria-live="polite">
+            ✨ Wish diterima. Semoga pelan-pelan jadi nyata.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: LETTER FOR YOU (ANIMATED ENVELOPE + KITTY) -->
+    <section class="slide band-letter" data-slide="3" id="slide-3" aria-label="Surat untuk Halimah Azzahra">
+      <div class="slide-inner">
+        <h2 class="script-title letter-heading anim-item" style="--stagger:0.06s">Letter for you</h2>
+
+        <div class="envelope-scene anim-item" style="--stagger:0.16s">
+          <div class="kitty-companion" aria-hidden="true">
+            <svg viewBox="0 0 110 135" class="kitty-svg">
+              <polygon points="24,48 28,16 48,36" fill="#fffefe" stroke="#f2bfd4" stroke-width="2.2" stroke-linejoin="round"/>
+              <polygon points="86,48 82,16 62,36" fill="#fffefe" stroke="#f2bfd4" stroke-width="2.2" stroke-linejoin="round"/>
+              <polygon points="30,42 33,24 44,36" fill="#ffd2e4"/>
+              <polygon points="80,42 77,24 66,36" fill="#ffd2e4"/>
+              <path d="M32 84 Q55 76 78 84 L86 124 Q55 130 24 124 Z" fill="#ffb8d4" stroke="#f299bd" stroke-width="2"/>
+              <path d="M35 84 Q55 94 75 84" fill="#ffffff" stroke="#f299bd" stroke-width="1.8"/>
+              <circle cx="55" cy="96" r="3.5" fill="#ffffff"/>
+              <ellipse cx="26" cy="100" rx="8" ry="6" fill="#fffefe" stroke="#f2bfd4" stroke-width="2"/>
+              <ellipse cx="84" cy="100" rx="8" ry="6" fill="#fffefe" stroke="#f2bfd4" stroke-width="2"/>
+              <ellipse cx="55" cy="56" rx="33" ry="27" fill="#fffefe" stroke="#f2bfd4" stroke-width="2.2"/>
+              <circle cx="43" cy="54" r="3" fill="#4f273a" class="mochi-eye"/>
+              <circle cx="67" cy="54" r="3" fill="#4f273a" class="mochi-eye"/>
+              <ellipse cx="34" cy="60" rx="5" ry="2.8" fill="#ffb2cf"/>
+              <ellipse cx="76" cy="60" rx="5" ry="2.8" fill="#ffb2cf"/>
+              <ellipse cx="55" cy="59" rx="2.5" ry="1.8" fill="#f082a9"/>
+              <path d="M51 63 Q55 67 59 63" fill="none" stroke="#4f273a" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <div class="open-envelope-card" id="open-envelope-card">
+            <div class="env-open-flap"></div>
+            <div class="env-open-paper" id="env-open-paper">
+              <p class="env-paper-title">Happy Birthday, Beautiful Girl!</p>
+              <p class="env-paper-text" id="env-paper-text"></p>
+              <p class="env-paper-sign" id="env-paper-sign"></p>
+            </div>
+            <div class="env-open-pocket">
+              <div class="env-wax-ribbon">🩷</div>
+              <span class="env-pocket-label">Love Letter</span>
+            </div>
+          </div>
+
+          <img class="letter-right-flower" src="asset/bunga%20mpu.png" alt="" aria-hidden="true">
+          <img class="letter-right-balloons" src="asset/balon%20love%203.png" alt="" aria-hidden="true">
+        </div>
+
+        <button type="button" class="pill-btn soft-pink-btn anim-item" style="--stagger:0.3s" id="btn-expand-letter">
+          Baca Surat Lengkapnya 💌
+        </button>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: VERTICAL STRIPES — PHOTO CAROUSEL SLIDER & HEART MOSAIC -->
+    <section class="slide band-stripes" data-slide="4" id="slide-4" aria-label="Kumpulan foto Halimah Azzahra">
+      <div class="slide-inner">
+        <div class="bear-badge-wrap anim-item" style="--stagger:0.06s">
+          <div class="bear-ears" aria-hidden="true">
+            <span class="ear-l"></span><span class="ear-r"></span>
+            <span class="bear-face">• ◡ •</span>
+          </div>
+          <div class="bear-badge-pill">
+            Foto foto my beautiful girl<br>
+            <strong data-recipient>Halimah Azzahra</strong> 🩷
+          </div>
+        </div>
+
+        <!-- Cute Tab Switcher inside Slide 5 -->
+        <div class="gallery-mode-tabs anim-item" style="--stagger:0.14s" role="tablist">
+          <button type="button" class="mode-tab active" data-tab="carousel" role="tab" aria-selected="true">🎞️ Slide Foto</button>
+          <button type="button" class="mode-tab" data-tab="mosaic" role="tab" aria-selected="false">🩷 Kolase Hati</button>
+        </div>
+
+        <!-- View A: Ornate Oval + Animated Polaroid Carousel Slider -->
+        <div class="gallery-panel active" id="panel-carousel">
+          <div class="ornate-oval-stage anim-item" style="--stagger:0.2s">
+            <img class="oval-butterfly" src="asset/kupu%20kupu.png" alt="" aria-hidden="true">
+            <div class="pink-cloud cloud-1" aria-hidden="true">
+              <svg viewBox="0 0 80 48" width="66" height="40">
+                <path d="M18 40 H62 C70 40 74 34 72 28 C70 22 64 20 59 21 C57 12 49 6 40 8 C33 9 28 14 26 20 C19 19 12 24 12 31 C12 36 14 40 18 40 Z" fill="#ffd8e8" stroke="#ffffff" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <div class="pink-cloud cloud-2" aria-hidden="true">
+              <svg viewBox="0 0 80 48" width="62" height="38">
+                <path d="M18 40 H62 C70 40 74 34 72 28 C70 22 64 20 59 21 C57 12 49 6 40 8 C33 9 28 14 26 20 C19 19 12 24 12 31 C12 36 14 40 18 40 Z" fill="#ffe6f0" stroke="#ffffff" stroke-width="2.5"/>
+              </svg>
+            </div>
+
+            <div class="ornate-oval-frame" id="ornate-oval-frame" role="button" tabindex="0" aria-label="Lihat foto utama lebih besar">
+              <div class="ornate-oval-inner" id="ornate-oval-inner"></div>
+            </div>
+            <img class="oval-balloon-mini" src="asset/balon%201.png" alt="" aria-hidden="true">
+          </div>
+
+          <!-- Animated Horizontal Photo Carousel Slider -->
+          <div class="photo-carousel" id="photo-carousel">
+            <button type="button" class="car-btn prev" id="car-prev" aria-label="Foto sebelumnya">‹</button>
+            <div class="car-viewport">
+              <div class="car-track" id="car-track"></div>
+            </div>
+            <button type="button" class="car-btn next" id="car-next" aria-label="Foto berikutnya">›</button>
+          </div>
+          <div class="car-dots" id="car-dots"></div>
+        </div>
+
+        <!-- View B: Animated 27-Tile Pixel Heart Mosaic -->
+        <div class="gallery-panel" id="panel-mosaic">
+          <div class="mosaic-mini-card">
+            <p class="mosaic-mini-title">Kolase Hati Untuk my lovee 🎀</p>
+            <div class="heart-mosaic" id="heart-mosaic"></div>
+            <div class="tile-note-bubble" id="tile-note-bubble">
+              Ketuk foto kecilnya di dalam hati ini ya~ 🌸
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: JUST FOR YOU + LUCKY GACHA -->
+    <section class="slide band-justforyou" data-slide="5" id="slide-5" aria-label="Pesan spesial untuk Halimah Azzahra">
+      <div class="slide-inner">
+        <h2 class="script-title just-title anim-item" style="--stagger:0.06s">Just for you</h2>
+
+        <div class="just-card-wrap anim-item" style="--stagger:0.18s">
+          <span class="strawberry-corner" aria-hidden="true">🍓</span>
+          <div class="just-card">
+            <p class="just-body" id="just-body"></p>
+          </div>
+        </div>
+
+        <div class="gacha-box anim-item" style="--stagger:0.3s">
+          <button type="button" class="gacha-btn" id="btn-gacha">
+            <span>🫧</span> Cobaa tekan Keberuntungan
+          </button>
+          <p class="gacha-result" id="gacha-result"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: CLOSING LACE OVAL + FLUFFY PINK TEDDY BEAR -->
+    <section class="slide band-closing" data-slide="6" id="slide-6" aria-label="Penutup ucapan ulang tahun">
+      <div class="slide-inner">
+        <h2 class="script-title closing-title anim-item" style="--stagger:0.06s">Closing</h2>
+
+        <div class="closing-top-stage anim-item" style="--stagger:0.16s">
+          <div class="closing-circle-frame" id="closing-circle-frame"></div>
+          <div class="pink-teddy" id="pink-teddy" aria-hidden="true">
+            <svg viewBox="0 0 110 120" class="teddy-svg">
+              <circle cx="30" cy="30" r="14" fill="#ffb8d4" stroke="#f297bc" stroke-width="2"/>
+              <circle cx="80" cy="30" r="14" fill="#ffb8d4" stroke="#f297bc" stroke-width="2"/>
+              <circle cx="30" cy="30" r="7" fill="#ffe6f0"/>
+              <circle cx="80" cy="30" r="7" fill="#ffe6f0"/>
+              <ellipse cx="55" cy="88" rx="30" ry="26" fill="#ffc3db" stroke="#f297bc" stroke-width="2"/>
+              <ellipse cx="55" cy="92" rx="18" ry="15" fill="#ffe8f1"/>
+              <ellipse cx="32" cy="108" rx="12" ry="9" fill="#ffb8d4" stroke="#f297bc" stroke-width="2"/>
+              <ellipse cx="78" cy="108" rx="12" ry="9" fill="#ffb8d4" stroke="#f297bc" stroke-width="2"/>
+              <ellipse cx="26" cy="80" rx="10" ry="7" fill="#ffb8d4" stroke="#f297bc" stroke-width="2" transform="rotate(-24 26 80)"/>
+              <ellipse cx="84" cy="80" rx="10" ry="7" fill="#ffb8d4" stroke="#f297bc" stroke-width="2" transform="rotate(24 84 80)"/>
+              <circle cx="55" cy="48" r="28" fill="#ffc3db" stroke="#f297bc" stroke-width="2"/>
+              <ellipse cx="55" cy="54" rx="12" ry="9" fill="#fff5f9"/>
+              <circle cx="44" cy="44" r="3" fill="#4f273a" class="mochi-eye"/>
+              <circle cx="66" cy="44" r="3" fill="#4f273a" class="mochi-eye"/>
+              <ellipse cx="55" cy="51" rx="3.5" ry="2.4" fill="#e8528a"/>
+              <path d="M51 56 Q55 60 59 56" fill="none" stroke="#4f273a" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M55 72 C49 64, 40 68, 45 75 C49 79, 55 83, 55 83 C55 83, 61 79, 65 75 C70 68, 61 64, 55 72 Z" fill="#ff7eb0"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="closing-lace-oval anim-item" style="--stagger:0.26s">
+          <p class="closing-lead">That's all for this little surprise.</p>
+          <p class="closing-body" id="closing-body"></p>
+          <img class="closing-flower-bottom" src="asset/bunga%20mpk.png" alt="" aria-hidden="true">
+        </div>
+
+        <div class="closing-actions anim-item" style="--stagger:0.34s">
+          <button type="button" class="pill-btn primary-btn jelly-btn" id="btn-hug">
+            Peluk jauhh &amp; Confetti 🫶🩷
+          </button>
+        </div>
+        <p class="hug-toast" id="hug-toast"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Floating Bottom Slide Navigation Controls -->
+  <nav class="slide-nav-bar" id="slide-nav-bar" aria-label="Navigasi antar slide">
+    <button type="button" class="nav-arrow-btn" id="btn-prev-slide" aria-label="Slide sebelumnya">‹</button>
+    <span class="nav-hint-pill" id="nav-hint-pill">Geser atau klik Lanjut ✨</span>
+    <button type="button" class="nav-next-btn" id="btn-next-slide">
+      <span id="btn-next-label">Lanjut →</span>
+    </button>
+  </nav>
+
+  <!-- Cute Modal for Full Letter or Zoomed Photos -->
+  <div class="cute-modal" id="cute-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="cute-modal-backdrop" id="modal-backdrop"></div>
+    <div class="cute-modal-card" id="modal-card">
+      <button type="button" class="modal-close" id="modal-close" aria-label="Tutup">✕</button>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Hidden Persistent YouTube Audio Host (stays active across all 7 slides) -->
+  <div class="yt-audio-host" id="yt-audio-host" aria-hidden="true">
+    <div id="yt-player-mount"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
