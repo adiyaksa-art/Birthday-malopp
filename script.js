@@ -12,7 +12,7 @@ const CONFIG = {
   birthdayDay: 5,
   birthdayYear: 2026,
 
-  heroPhoto: 'asset/foto1.jpg',
+  heroPhoto: 'asset/kecil.jpeg',
   ovalPhoto: 'asset/foto2.jpg',
   closingPhoto: 'asset/foto1.jpg',
   showcasePhotos: ['asset/foto3.jpg', 'asset/foto4.jpg', 'asset/foto5.jpg'],
@@ -759,7 +759,7 @@ function populateContent() {
 
   const heartContent = document.getElementById('hero-heart-content');
   if (CONFIG.heroPhoto) {
-    heartContent.innerHTML = `<image href="${CONFIG.heroPhoto}" x="-110" y="-195" width="460" height="613" preserveAspectRatio="xMidYMid slice"/>`;
+    heartContent.innerHTML = `<image href="${CONFIG.heroPhoto}" x="0" y="0" width="240" height="225" preserveAspectRatio="xMidYMid slice"/>`;
   } else {
     heartContent.innerHTML = buildHeroHeartSvgMarkup();
   }
