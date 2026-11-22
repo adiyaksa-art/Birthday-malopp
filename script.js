@@ -15,7 +15,7 @@ const CONFIG = {
   heroPhoto: 'asset/kecil.jpeg',
   ovalPhoto: 'asset/foto2.jpg',
   closingPhoto: 'asset/foto1.jpg',
-  showcasePhotos: ['asset/foto3.jpg', 'asset/foto4.jpg', 'asset/foto5.jpg'],
+  showcasePhotos: ['asset/foto3.jpg', 'asset/foto5.jpg', 'asset/foto4.jpg'],
   galleryPhotos: [
     'asset/foto3.jpg',
     'asset/foto4.jpg',
